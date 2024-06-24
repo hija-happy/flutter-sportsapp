@@ -1,0 +1,20 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Custom for project:
+*.dart text eol=lf
+*.txt text eol=lf
+*.sh text eol=lf
+*.md text eol=lf
+
+# Binary files
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.pdf binary
+*.zip binary
+*.exe binary
+
+# Ensure .gitattributes itself is treated correctly
+.gitattributes text eol=lf
