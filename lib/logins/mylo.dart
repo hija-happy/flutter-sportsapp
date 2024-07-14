@@ -1,6 +1,7 @@
 
 import 'dart:ui';
 
+import 'package:alvas_sports/home.dart';
 import 'package:alvas_sports/logins/mysi.dart';
 import 'package:flutter/material.dart';
 
@@ -80,7 +81,9 @@ class Login extends StatelessWidget {
                             ElevatedButton(
                               style: ButtonStyle(
                               minimumSize: MaterialStateProperty.all(Size(200, 50))),
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(context, MaterialPageRoute(builder: (context)=>Home() ));
+                              },
                               child: Text("Login",style: TextStyle(fontSize: 16)),
                             ),
                             SizedBox(height: 30),

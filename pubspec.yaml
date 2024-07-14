@@ -39,6 +39,11 @@ dependencies:
   babstrap_settings_screen: ^0.1.6
   url_launcher: ^6.3.0
   timeago: ^3.6.1
+  sidebarx: ^0.17.1
+  firebase_core: ^2.27.0
+  firebase_auth: ^4.17.8
+  line_awesome_flutter: ^3.0.1
+  flutter_staggered_grid_view: ^0.7.0
 
 dev_dependencies:
   flutter_test:
@@ -75,6 +80,7 @@ flutter:
     - assets/register_bg.jpg
     - assets/login_bg.jpg
     - assets/blue-gradient.jpg
+    - assets/Home_Image/
 
     
 

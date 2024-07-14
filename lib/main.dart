@@ -1,4 +1,4 @@
-import 'package:alvas_sports/home.dart';
+import 'package:alvas_sports/onboardingPage/onboardingPage_View.dart';
 import 'package:flutter/material.dart';
 void main() {
   runApp(const MyApp());
@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
      
       theme: ThemeData(
         fontFamily:'Roboto'),
-       home:   Home(),
+       home:   OnboardingPageView(),
      );
   }
 }

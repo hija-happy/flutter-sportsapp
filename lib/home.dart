@@ -1,31 +1,35 @@
+import 'package:alvas_sports/bottom_nav_screens/bottom_nav_settings.dart';
 import 'package:alvas_sports/bottom_nav_screens/bottom_nav_sports.dart';
+import 'package:alvas_sports/screens/HomeScreen.dart';
 import 'package:awesome_bottom_bar/awesome_bottom_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 import 'colors.dart'; // Ensure this is your correct import for colors
 
 const List<TabItem> items = [
   TabItem(
-    icon: Icons.home,
+    icon: LineAwesomeIcons.home_solid,  // Direct IconData
     title: 'Home',
   ),
   TabItem(
-    icon: Icons.sports_golf,
-    title: 'Sports',
+    icon: LineAwesomeIcons.newspaper,  // Direct IconData
+    title: 'News',
   ),
   TabItem(
-    icon: Icons.add,
+    icon: LineAwesomeIcons.plus_solid,  // Direct IconData
     title: 'Register',
   ),
   TabItem(
-    icon: Icons.star,
+    icon: LineAwesomeIcons.trophy_solid,  // Direct IconData
     title: 'Achievements',
   ),
   TabItem(
-    icon: Icons.settings,
+    icon: Icons.settings,  // Direct IconData
     title: 'Settings',
   ),
 ];
+
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -36,32 +40,121 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int visit = 0;
-  double height = 10;
 
   final List<Widget> _screens = [
-    HomeScreen(),
+    HomePage(),
     NewsFeedPage2(),
     RegisterScreen(),
     AchievementsScreen(),
-    // Settings(
-    //   userName : 'Hija Happy',
-    //   userProfilePic :const AssetImage('assets/man.jpg')
-    // ),
-    
+    SettingsScreen(),
   ];
+
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 4, 138, 9),
-        title: Text("Home"),
+        backgroundColor: Color.fromARGB(255, 2, 67, 4),
+        title: Text(
+          "Home",
+          style: TextStyle(color: FontColor.appbarColour),
+        ),
+        centerTitle: true,
+        actions: [
+          IconButton(
+            icon: Icon(Icons.menu),
+            onPressed: () {
+              _scaffoldKey.currentState?.openEndDrawer();
+            },
+          ),
+        ],
       ),
-      backgroundColor: Color.lerp(Colors.green, Color.fromARGB(255, 88, 164, 225), 10),
+      endDrawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.green,
+              ),
+              child: Text(
+                'Menu',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 24,
+                ),
+              ),
+            ),
+            ListTile(
+              leading: const Icon(Icons.account_circle_rounded),
+              title: Text('Profile'),
+              onTap: () {
+                Navigator.pop(context);
+                setState(() {
+                  visit = 0;
+                });
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.calendar_month),
+              title: Text('Calendar'),
+              onTap: () {
+                Navigator.pop(context);
+                setState(() {
+                  visit = 1;
+                });
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.add),
+              title: Text('Circular'),
+              onTap: () {
+                Navigator.pop(context);
+                setState(() {
+                  visit = 2;
+                });
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.settings),
+              title: Text('Settings'),
+              onTap: () {
+                Navigator.pop(context);
+                setState(() {
+                  visit = 3;
+                });
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.help),
+              title: Text('Help'),
+              onTap: () {
+                Navigator.pop(context);
+                setState(() {
+                  visit = 4;
+                });
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.info),
+              title: Text('About Us'),
+              onTap: () {
+                Navigator.pop(context);
+                setState(() {
+                  visit = 4;
+                });
+              },
+            ),
+          ],
+        ),
+      ),
+      backgroundColor: Colors.white,
       body: _screens[visit],
       bottomNavigationBar: BottomBarFloating(
         items: items,
-        backgroundColor: Color.fromARGB(255, 4, 138, 9),
+        backgroundColor: Bottom_Nav_Bar_Colors.bgColor,
         colorSelected: Bottom_Nav_Bar_Colors.colorSelect,
         color: Bottom_Nav_Bar_Colors.color,
         indexSelected: visit,
@@ -109,5 +202,3 @@ class AchievementsScreen extends StatelessWidget {
     );
   }
 }
-
-

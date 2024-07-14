@@ -64,5 +64,11 @@ class Background extends StatelessWidget {
  static const Color  colorSelect =  Colors.orange;
  static const Color color =  Color.fromARGB(255, 255, 255, 255);
  static const Color color2 =  Color(0xFFFDF996);
- static const Color bgColor =  Color(0xFFFEF017);
+ static const Color bgColor =  Color.fromARGB(255, 4, 76, 3);
+  }
+
+
+  class FontColor{
+
+    static const Color appbarColour = Colors.white;
   }

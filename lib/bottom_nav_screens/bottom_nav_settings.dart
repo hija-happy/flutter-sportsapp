@@ -9,9 +9,9 @@ class SettingsScreen extends StatelessWidget {
         children: [
           // User card
           BigUserCard(
-            cardColor: Colors.red,
+           
             userName: "John Doe",
-            userProfilePic: AssetImage('assets/profile_pic.png'), // Replace with your image path
+            userProfilePic: AssetImage('assets/man.png'), // Replace with your image path
             userMoreInfo: Text(
               "User info",
               style: TextStyle(color: Colors.white),
