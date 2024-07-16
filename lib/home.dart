@@ -1,3 +1,4 @@
+import 'package:alvas_sports/bottom_nav_screens/bottom_nav_register.dart';
 import 'package:alvas_sports/bottom_nav_screens/bottom_nav_settings.dart';
 import 'package:alvas_sports/bottom_nav_screens/bottom_nav_sports.dart';
 import 'package:alvas_sports/screens/HomeScreen.dart';
@@ -5,27 +6,27 @@ import 'package:awesome_bottom_bar/awesome_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
-import 'colors.dart'; // Ensure this is your correct import for colors
+import 'utility/colors.dart'; 
 
 const List<TabItem> items = [
   TabItem(
-    icon: LineAwesomeIcons.home_solid,  // Direct IconData
+    icon: LineAwesomeIcons.home_solid,  
     title: 'Home',
   ),
   TabItem(
-    icon: LineAwesomeIcons.newspaper,  // Direct IconData
+    icon: LineAwesomeIcons.newspaper,  
     title: 'News',
   ),
   TabItem(
-    icon: LineAwesomeIcons.plus_solid,  // Direct IconData
+    icon: LineAwesomeIcons.plus_solid,  
     title: 'Register',
   ),
   TabItem(
-    icon: LineAwesomeIcons.trophy_solid,  // Direct IconData
+    icon: LineAwesomeIcons.trophy_solid,  
     title: 'Achievements',
   ),
   TabItem(
-    icon: Icons.settings,  // Direct IconData
+    icon: Icons.settings,  
     title: 'Settings',
   ),
 ];
@@ -44,7 +45,7 @@ class _HomeState extends State<Home> {
   final List<Widget> _screens = [
     HomePage(),
     NewsFeedPage2(),
-    RegisterScreen(),
+    RegistrationForm(),
     AchievementsScreen(),
     SettingsScreen(),
   ];
@@ -185,14 +186,7 @@ class SportsScreen extends StatelessWidget {
   }
 }
 
-class RegisterScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text('Register Screen'),
-    );
-  }
-}
+
 
 class AchievementsScreen extends StatelessWidget {
   @override

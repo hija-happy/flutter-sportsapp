@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "357589219907",
-    "project_id": "alvas-sports",
-    "storage_bucket": "alvas-sports.appspot.com"
+    "project_number": "433091418944",
+    "project_id": "college-sports-app",
+    "storage_bucket": "college-sports-app.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:357589219907:android:b916d38be67a47a263f2f6",
+        "mobilesdk_app_id": "1:433091418944:android:565828939b4f9f1af078a5",
         "android_client_info": {
           "package_name": "com.example.alvas_sports"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCS4hYXAwUE2d8COZboAe8ee4uaIqVCUUg"
+          "current_key": "AIzaSyD75-koogxVVEW-mH3DS2kaVJBqZaLoSKc"
         }
       ],
       "services": {

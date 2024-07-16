@@ -1,4 +1,4 @@
-import 'package:alvas_sports/colors.dart';
+import 'package:alvas_sports/utility/colors.dart';
 import 'package:flutter/material.dart';
 
 class SportPage extends StatelessWidget {

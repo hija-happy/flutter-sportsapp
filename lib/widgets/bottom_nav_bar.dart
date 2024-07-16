@@ -1,5 +1,5 @@
 
-import 'package:alvas_sports/colors.dart';
+import 'package:alvas_sports/utility/colors.dart';
 import 'package:awesome_bottom_bar/awesome_bottom_bar.dart';
 import 'package:flutter/material.dart';
 
