@@ -2,6 +2,7 @@
 
 import 'dart:async';  // For Timer
 
+import 'package:alvas_sports/utility/card.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -51,6 +52,101 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+
+
+final List<CategoryCard> categories = [
+      CategoryCard(
+        name: 'Cricket',
+        image: 'assets/category/cricket.jpg',
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => DetailFootballPage()),
+          );
+        },
+      ),
+      CategoryCard(
+        name: 'FootBall',
+        image: 'assets/category/football.jpg',
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => DetailBasketballPage()),
+          );
+        },
+      ),
+      CategoryCard(
+        name: 'HandBall',
+        image: 'assets/category/handball.jpg',
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => DetailTennisPage()),
+          );
+        },
+      ),
+      CategoryCard(
+        name: 'Kabbadi',
+        image: 'assets/category/kabbadi.jpg',
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => DetailHockeyPage()),
+          );
+        },
+      ),
+      CategoryCard(
+        name: 'Kho - Kho',
+        image: 'assets/category/kho-kho.jpeg',
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => DetailBaseballPage()),
+          );
+        },
+      ),
+      CategoryCard(
+        name: 'Tennis',
+        image: 'assets/category/tennis.jpg',
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => DetailVolleyballPage()),
+          );
+        },
+      ),
+      CategoryCard(
+        name: 'VolleyBall',
+        image: 'assets/category/volleyball.png',
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => DetailCricketPage()),
+          );
+        },
+      ),
+      CategoryCard(
+        name: 'Weight Lifting',
+        image: 'assets/category/weight.jpg',
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => DetailRugbyPage()),
+          );
+        },
+      ),
+      CategoryCard(
+        name: 'Wrestling',
+        image: 'assets/category/wresting.jpg',
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => DetailSwimmingPage()),
+          );
+        },
+      ),
+    ];
+
     return  Column(
       children: [
         Container(
@@ -90,26 +186,45 @@ class _HomePageState extends State<HomePage> {
               children: [
                 Text("Category"),
 
-                Row(
-                  children: [
-                    Card(
-                      child: Text("Hii"),
+                    Expanded(
+            child: GridView.builder(
+              padding: EdgeInsets.all(8),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3,
+                crossAxisSpacing: 8,
+                mainAxisSpacing: 8,
+              ),
+              itemCount: categories.length,
+              itemBuilder: (context, index) {
+                final category = categories[index];
+                return GestureDetector(
+                  onTap: category.onTap,
+                  child: Card(
+                    child: Column(
+                      children: [
+                        Expanded(
+                          child: Image.asset(
+                            category.image,
+                            fit: BoxFit.cover,
+                            width: double.infinity,
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            category.name,
+                            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                      ],
                     ),
-                    Card(
-                      child: Text("Hii"),
-                    ),
-                  ],
                   ),
-                Row(
-                  children: [
-Card(
-                      child: Text("Hii"),
-                    ),
-                    Card(
-                      child: Text("Hii"),
-                    ),
-                  ],
-                  )
+                );
+              },
+            ),
+          ),
+               
                 
               ]),
               
@@ -140,3 +255,176 @@ class Tile extends StatelessWidget {
   }
 }
 
+
+
+
+
+class DetailFootballPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Football Details'),
+      ),
+      body: Center(
+        child: Text(
+          'Detailed information about Football.',
+          style: TextStyle(fontSize: 20),
+        ),
+      ),
+    );
+  }
+}
+
+class DetailBasketballPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Basketball Details'),
+      ),
+      body: Center(
+        child: Text(
+          'Detailed information about Basketball.',
+          style: TextStyle(fontSize: 20),
+        ),
+      ),
+    );
+  }
+}
+
+class DetailTennisPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Tennis Details'),
+      ),
+      body: Center(
+        child: Text(
+          'Detailed information about Tennis.',
+          style: TextStyle(fontSize: 20),
+        ),
+      ),
+    );
+  }
+}
+
+class DetailHockeyPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Hockey Details'),
+      ),
+      body: Center(
+        child: Text(
+          'Detailed information about Hockey.',
+          style: TextStyle(fontSize: 20),
+        ),
+      ),
+    );
+  }
+}
+
+class DetailBaseballPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Baseball Details'),
+      ),
+      body: Center(
+        child: Text(
+          'Detailed information about Baseball.',
+          style: TextStyle(fontSize: 20),
+        ),
+      ),
+    );
+  }
+}
+
+class DetailVolleyballPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Volleyball Details'),
+      ),
+      body: Center(
+        child: Text(
+          'Detailed information about Volleyball.',
+          style: TextStyle(fontSize: 20),
+        ),
+      ),
+    );
+  }
+}
+
+class DetailCricketPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Cricket Details'),
+      ),
+      body: Center(
+        child: Text(
+          'Detailed information about Cricket.',
+          style: TextStyle(fontSize: 20),
+        ),
+      ),
+    );
+  }
+}
+
+class DetailRugbyPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Rugby Details'),
+      ),
+      body: Center(
+        child: Text(
+          'Detailed information about Rugby.',
+          style: TextStyle(fontSize: 20),
+        ),
+      ),
+    );
+  }
+}
+
+class DetailSwimmingPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Swimming Details'),
+      ),
+      body: Center(
+        child: Text(
+          'Detailed information about Swimming.',
+          style: TextStyle(fontSize: 20),
+        ),
+      ),
+    );
+  }
+}
+
+class DetailGolfPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Golf Details'),
+      ),
+      body: Center(
+        child: Text(
+          'Detailed information about Golf.',
+          style: TextStyle(fontSize: 20),
+        ),
+      ),
+    );
+  }
+}

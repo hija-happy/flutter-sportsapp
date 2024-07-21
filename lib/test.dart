@@ -1,465 +1,236 @@
-// import 'package:awesome_bottom_bar/awesome_bottom_bar.dart';
-// import 'package:flutter/material.dart';
-
-// const List<TabItem> items = [
-//   TabItem(
-//     icon: Icons.home,
-//     title: 'Home',
-//   ),
-//   TabItem(
-//     icon: Icons.search_sharp,
-//     title: 'Shop',
-//   ),
-//   TabItem(
-//     icon: Icons.favorite_border,
-//     title: 'Wishlist',
-//   ),
-//   TabItem(
-//     icon: Icons.shopping_cart_outlined,
-//     title: 'Cart',
-//   ),
-//   TabItem(
-//     icon: Icons.account_box,
-//     title: 'profile',
-//   ),
-// ];
-
-
-
-
-// class MyApp extends StatelessWidget {
-//   const MyApp({Key? key}) : super(key: key);
-
-//   // This widget is the root of your application.
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-
-//       appBar: AppBar(title: Home),
-//       theme: ThemeData(
-//         primarySwatch: Colors.blue,
-//       ),
-//       home: const MyHomePage(title: 'Flutter Demo Home Page'),
-//     );
-//   }
-// }
-
-// class MyHomePage extends StatefulWidget {
-//   const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-//   final String title;
-
-//   @override
-//   _MyHomePageState createState() => _MyHomePageState();
-// }
-
-// class _MyHomePageState extends State<MyHomePage> {
-//   int visit = 0;
-//   double height = 30;
-//   Color colorSelect =const Color(0XFF0686F8);
-//   Color color = const Color(0XFF7AC0FF);
-//   Color color2 = const Color(0XFF96B1FD);
-//   Color bgColor = const  Color(0XFF1752FE);
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text(widget.title),
-//       ),
-     
-//       body: SingleChildScrollView(
-//         padding:const EdgeInsets.symmetric(vertical: 20),
-//         child: Column(
-//           children: [
-           
-//           ],
-//         ),
-//       ),
-//       bottomNavigationBar: Container(
-        
-//         child: BottomBarFloating(
-//           items: items,
-//           backgroundColor: Color.fromARGB(255, 244, 235, 111),
-//           color: Colors.white,
-//           colorSelected: Colors.orange,
-//           indexSelected: visit,
-//           paddingVertical: 24,
-//           onTap: (int index) => setState(() {
-//             visit = index;
-//           }),
-//         ),
-//       ),
-//     );
-//   }
-// }
-
-
-///////////////////////////////////////////////////
-////////////////////////////////////////////
-/////////////////////////////////
-//////////////////////////        Bottom navigaotor
-//////////////////////////////////////
-//////////////////////////////////////
-// import 'package:flutter/material.dart';
-
-// class Home extends StatefulWidget {
-//   @override
-//   _HomeState createState() => _HomeState();
-// }
-
-// class _HomeState extends State<Home> {
-//   int _selectedIndex = 0;
-
-//   final List<Widget> _screens = [
-//     ScreenOne(),
-//     ScreenTwo(),
-//     ScreenThree(),
-//     ScreenFour(),
-//     ScreenFive(),
-//   ];
-
-//   void _onItemTapped(int index) {
-//     setState(() {
-//       _selectedIndex = index;
-//     });
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text('Flutter App with Bottom Navigation'),
-//       ),
-//       body: _screens[_selectedIndex],
-//       bottomNavigationBar: BottomNavigationBar(
-//         items: const <BottomNavigationBarItem>[
-//           BottomNavigationBarItem(
-//             icon: Icon(Icons.home),
-//             label: 'Home',
-//           ),
-//           BottomNavigationBarItem(
-//             icon: Icon(Icons.business),
-//             label: 'Business',
-//           ),
-//           BottomNavigationBarItem(
-//             icon: Icon(Icons.school),
-//             label: 'School',
-//           ),
-//           BottomNavigationBarItem(
-//             icon: Icon(Icons.settings),
-//             label: 'Settings',
-//           ),
-//           BottomNavigationBarItem(
-//             icon: Icon(Icons.person),
-//             label: 'Profile',
-//           ),
-//         ],
-//         currentIndex: _selectedIndex,
-//         selectedItemColor: Colors.amber[800],
-//         onTap: _onItemTapped,
-//       ),
-//     );
-//   }
-// }
-
-// class ScreenOne extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Center(
-//       child: Text('Home Screen'),
-//     );
-//   }
-// }
-
-// class ScreenTwo extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Center(
-//       child: Text('Business Screen'),
-//     );
-//   }
-// }
-
-// class ScreenThree extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Center(
-//       child: Text('School Screen'),
-//     );
-//   }
-// }
-
-// class ScreenFour extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Center(
-//       child: Text('Settings Screen'),
-//     );
-//   }
-// }
-
-// class ScreenFive extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Center(
-//       child: Text('Profile Screen'),
-//     );
-//   }
-// }
-
-
-
 import 'package:flutter/material.dart';
-import 'package:sidebarx/sidebarx.dart';
+import 'package:flutter_email_sender/flutter_email_sender.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
-void main() {
-  runApp(SidebarXExampleApp());
-}
+void main() => runApp(MyApp());
 
-class SidebarXExampleApp extends StatelessWidget {
-  SidebarXExampleApp({Key? key}) : super(key: key);
-
-  final _controller = SidebarXController(selectedIndex: 0, extended: true);
-  final _key = GlobalKey<ScaffoldState>();
-
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'SidebarX Example',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primaryColor: primaryColor,
-        canvasColor: canvasColor,
-        scaffoldBackgroundColor: scaffoldBackgroundColor,
-        textTheme: const TextTheme(
-          headlineSmall: TextStyle(
-            color: Colors.white,
-            fontSize: 46,
-            fontWeight: FontWeight.w800,
-          ),
-        ),
+      home: HelpScreen(),
+    );
+  }
+}
+
+class HelpScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Help'),
       ),
-      home: Builder(
-        builder: (context) {
-          final isSmallScreen = MediaQuery.of(context).size.width < 600;
-          return Scaffold(
-            key: _key,
-            appBar: isSmallScreen
-                ? AppBar(
-                    backgroundColor: canvasColor,
-                    title: Text(_getTitleByIndex(_controller.selectedIndex)),
-                    leading: IconButton(
-                      onPressed: () {
-                        // if (!Platform.isAndroid && !Platform.isIOS) {
-                        //   _controller.setExtended(true);
-                        // }
-                        _key.currentState?.openDrawer();
-                      },
-                      icon: const Icon(Icons.menu),
-                    ),
-                  )
-                : null,
-            drawer: ExampleSidebarX(controller: _controller),
-            body: Row(
-              children: [
-                if (!isSmallScreen) ExampleSidebarX(controller: _controller),
-                Expanded(
-                  child: Center(
-                    child: _ScreensExample(
-                      controller: _controller,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          );
-        },
+      body: ListView(
+        padding: EdgeInsets.all(16.0),
+        children: [
+          ListTile(
+            title: Text('Frequently Asked Questions (FAQs)'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => FAQScreen()),
+              );
+            },
+          ),
+          ListTile(
+            title: Text('User Guide'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => UserGuideScreen()),
+              );
+            },
+          ),
+          ListTile(
+            title: Text('Contact Support'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ContactSupportScreen()),
+              );
+            },
+          ),
+          ListTile(
+            title: Text('Feedback'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => FeedbackScreen()),
+              );
+            },
+          ),
+          ListTile(
+            title: Text('Privacy Policy'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => PrivacyPolicyScreen()),
+              );
+            },
+          ),
+          ListTile(
+            title: Text('Terms of Service'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => TermsOfServiceScreen()),
+              );
+            },
+          ),
+        ],
       ),
     );
   }
 }
 
-class ExampleSidebarX extends StatelessWidget {
-  const ExampleSidebarX({
-    Key? key,
-    required SidebarXController controller,
-  })  : _controller = controller,
-        super(key: key);
-
-  final SidebarXController _controller;
-
+class FAQScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return SidebarX(
-      controller: _controller,
-      theme: SidebarXTheme(
-        margin: const EdgeInsets.all(10),
-        decoration: BoxDecoration(
-          color: canvasColor,
-          borderRadius: BorderRadius.circular(20),
-        ),
-        hoverColor: scaffoldBackgroundColor,
-        textStyle: TextStyle(color: Colors.white.withOpacity(0.7)),
-        selectedTextStyle: const TextStyle(color: Colors.white),
-        hoverTextStyle: const TextStyle(
-          color: Colors.white,
-          fontWeight: FontWeight.w500,
-        ),
-        itemTextPadding: const EdgeInsets.only(left: 30),
-        selectedItemTextPadding: const EdgeInsets.only(left: 30),
-        itemDecoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          border: Border.all(color: canvasColor),
-        ),
-        selectedItemDecoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          border: Border.all(
-            color: actionColor.withOpacity(0.37),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('FAQs'),
+      ),
+      body: ListView(
+        padding: EdgeInsets.all(16.0),
+        children: [
+          ListTile(
+            title: Text('What is this app about?'),
+            subtitle: Text('This app helps you manage your tasks efficiently.'),
           ),
-          gradient: const LinearGradient(
-            colors: [accentCanvasColor, canvasColor],
+          ListTile(
+            title: Text('How do I reset my password?'),
+            subtitle: Text('Go to Settings > Account > Reset Password.'),
           ),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.28),
-              blurRadius: 30,
-            )
+          // Add more FAQs here
+        ],
+      ),
+    );
+  }
+}
+
+class UserGuideScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('User Guide'),
+      ),
+      body: Padding(
+        padding: EdgeInsets.all(16.0),
+        child: Text(
+          'Step 1: How to get started...\n'
+          'Step 2: Navigating through the app...\n'
+          'Step 3: Using key features...\n',
+        ),
+      ),
+    );
+  }
+}
+
+class ContactSupportScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Contact Support'),
+      ),
+      body: Padding(
+        padding: EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('Email: support@example.com'),
+            Text('Phone: +1 234 567 890'),
           ],
         ),
-        iconTheme: IconThemeData(
-          color: Colors.white.withOpacity(0.7),
-          size: 20,
-        ),
-        selectedIconTheme: const IconThemeData(
-          color: Colors.white,
-          size: 20,
-        ),
-      ),
-      extendedTheme: const SidebarXTheme(
-        width: 200,
-        decoration: BoxDecoration(
-          color: canvasColor,
-        ),
-      ),
-      footerDivider: divider,
-      headerBuilder: (context, extended) {
-        return SizedBox(
-          height: 100,
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Image.asset('assets/images/avatar.png'),
-          ),
-        );
-      },
-      items: [
-        SidebarXItem(
-          icon: Icons.home,
-          label: 'Home',
-          onTap: () {
-            debugPrint('Home');
-          },
-        ),
-        const SidebarXItem(
-          icon: Icons.search,
-          label: 'Search',
-        ),
-        const SidebarXItem(
-          icon: Icons.people,
-          label: 'People',
-        ),
-        SidebarXItem(
-          icon: Icons.favorite,
-          label: 'Favorites',
-          selectable: false,
-          onTap: () => _showDisabledAlert(context),
-        ),
-        const SidebarXItem(
-          iconWidget: FlutterLogo(size: 20),
-          label: 'Flutter',
-        ),
-      ],
-    );
-  }
-
-  void _showDisabledAlert(BuildContext context) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text(
-          'Item disabled for selecting',
-          style: TextStyle(color: Colors.black),
-        ),
-        backgroundColor: Colors.white,
       ),
     );
   }
 }
 
-class _ScreensExample extends StatelessWidget {
-  const _ScreensExample({
-    Key? key,
-    required this.controller,
-  }) : super(key: key);
+class FeedbackScreen extends StatelessWidget {
+  final TextEditingController _feedbackController = TextEditingController();
 
-  final SidebarXController controller;
+  void _submitFeedback() async {
+    final Email email = Email(
+      body: _feedbackController.text,
+      subject: 'App Feedback',
+      recipients: ['support@example.com'],
+      isHTML: false,
+    );
+
+    try {
+      await FlutterEmailSender.send(email);
+      Fluttertoast.showToast(msg: "Feedback sent successfully!");
+    } catch (error) {
+      Fluttertoast.showToast(msg: "Failed to send feedback.");
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return AnimatedBuilder(
-      animation: controller,
-      builder: (context, child) {
-        final pageTitle = _getTitleByIndex(controller.selectedIndex);
-        switch (controller.selectedIndex) {
-          case 0:
-            return ListView.builder(
-              padding: const EdgeInsets.only(top: 10),
-              itemBuilder: (context, index) => Container(
-                height: 100,
-                width: double.infinity,
-                margin: const EdgeInsets.only(bottom: 10, right: 10, left: 10),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Theme.of(context).canvasColor,
-                  boxShadow: const [BoxShadow()],
-                ),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Feedback'),
+      ),
+      body: Padding(
+        padding: EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            TextField(
+              controller: _feedbackController,
+              maxLines: 5,
+              decoration: InputDecoration(
+                hintText: 'Enter your feedback',
+                border: OutlineInputBorder(),
               ),
-            );
-          default:
-            return Text(
-              pageTitle,
-              style: theme.textTheme.headlineSmall,
-            );
-        }
-      },
+            ),
+            SizedBox(height: 16),
+            ElevatedButton(
+              onPressed: _submitFeedback,
+              child: Text('Submit'),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
 
-String _getTitleByIndex(int index) {
-  switch (index) {
-    case 0:
-      return 'Home';
-    case 1:
-      return 'Search';
-    case 2:
-      return 'People';
-    case 3:
-      return 'Favorites';
-    case 4:
-      return 'Custom iconWidget';
-    case 5:
-      return 'Profile';
-    case 6:
-      return 'Settings';
-    default:
-      return 'Not found page';
+class PrivacyPolicyScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Privacy Policy'),
+      ),
+      body: Padding(
+        padding: EdgeInsets.all(16.0),
+        child: SingleChildScrollView(
+          child: Text(
+            'Your privacy policy content goes here.',
+          ),
+        ),
+      ),
+    );
   }
 }
 
-const primaryColor = Color(0xFF685BFF);
-const canvasColor = Color(0xFF2E2E48);
-const scaffoldBackgroundColor = Color(0xFF464667);
-const accentCanvasColor = Color(0xFF3E3E61);
-const white = Colors.white;
-final actionColor = const Color(0xFF5F5FA7).withOpacity(0.6);
-final divider = Divider(color: white.withOpacity(0.3), height: 1);
+class TermsOfServiceScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Terms of Service'),
+      ),
+      body: Padding(
+        padding: EdgeInsets.all(16.0),
+        child: SingleChildScrollView(
+          child: Text(
+            'Your terms of service content goes here.',
+          ),
+        ),
+      ),
+    );
+  }
+}

@@ -1,6 +1,7 @@
 import 'package:alvas_sports/bottom_nav_screens/bottom_nav_register.dart';
 import 'package:alvas_sports/bottom_nav_screens/bottom_nav_settings.dart';
 import 'package:alvas_sports/bottom_nav_screens/bottom_nav_sports.dart';
+import 'package:alvas_sports/drawer_screens/about_us.dart';
 import 'package:alvas_sports/screens/HomeScreen.dart';
 import 'package:awesome_bottom_bar/awesome_bottom_bar.dart';
 import 'package:flutter/material.dart';
@@ -122,10 +123,8 @@ class _HomeState extends State<Home> {
               leading: Icon(Icons.settings),
               title: Text('Settings'),
               onTap: () {
-                Navigator.pop(context);
-                setState(() {
-                  visit = 3;
-                });
+                Navigator.push(context,MaterialPageRoute(builder: (context)=> SettingsScreen()));
+               
               },
             ),
             ListTile(
@@ -142,10 +141,8 @@ class _HomeState extends State<Home> {
               leading: Icon(Icons.info),
               title: Text('About Us'),
               onTap: () {
-                Navigator.pop(context);
-                setState(() {
-                  visit = 4;
-                });
+                Navigator.push(context, MaterialPageRoute(builder: (context)=> AboutUsPage()));
+              
               },
             ),
           ],
