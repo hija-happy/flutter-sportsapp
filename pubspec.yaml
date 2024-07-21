@@ -51,6 +51,9 @@ dependencies:
   flutter_email_sender: ^6.0.3
   fluttertoast: ^8.2.5
   file_picker: ^8.0.0+1
+  image: ^4.2.0
+  shared_preferences: ^2.2.3
+  scrollable_table_view: ^2.0.3
 
 dev_dependencies:
   flutter_test:
@@ -97,7 +100,7 @@ flutter:
     - assets/category/volleyball.png
     - assets/category/weight.jpg
     - assets/category/wresting.jpg
-    - assets/gender/
+    - assets/gender/avatar.svg
 
     
 

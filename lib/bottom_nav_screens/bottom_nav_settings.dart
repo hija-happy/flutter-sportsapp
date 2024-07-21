@@ -1,11 +1,14 @@
-import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:alvas_sports/drawer_screens/about_us.dart';
 import 'package:alvas_sports/logins/mylo.dart';
+import 'package:alvas_sports/screens/Settings/privacy_settings.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/foundation.dart' show Uint8List, kIsWeb;
 import 'package:flutter/material.dart';
+import 'package:image/image.dart' as img;
 import 'package:image_picker/image_picker.dart';
 
 class SettingsScreen extends StatefulWidget {
@@ -15,8 +18,25 @@ class SettingsScreen extends StatefulWidget {
 
 class _SettingsScreenState extends State<SettingsScreen> {
   final ImagePicker _picker = ImagePicker();
-  String _imagePath = 'assets/gender/avatar.svg'; // Default image
+  final String _defaultImagePath = 'assets/man.jpg'; // Default image
   String? _imageUrl;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadProfileImage();
+  }
+
+  Future<void> _loadProfileImage() async {
+    try {
+      DocumentSnapshot snapshot = await FirebaseFirestore.instance.collection('profile_photo').doc('user_profile').get();
+      setState(() {
+        _imageUrl = snapshot['imageUrl'];
+      });
+    } catch (e) {
+      print('Error loading profile image: $e');
+    }
+  }
 
   Future<void> _pickImage() async {
     final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
@@ -30,7 +50,19 @@ class _SettingsScreenState extends State<SettingsScreen> {
     try {
       final fileName = image.name;
       final storageRef = FirebaseStorage.instance.ref().child('profile_photos/$fileName');
-      final uploadTask = storageRef.putFile(File(image.path));
+
+      final imageBytes = await image.readAsBytes();
+      final img.Image? imageFile = img.decodeImage(imageBytes);
+
+      if (imageFile == null) {
+        print('Failed to decode image.');
+        return;
+      }
+
+      final resizedImage = img.copyResize(imageFile, width: 800); // Resize image to 800px wide
+      final compressedImage = img.encodeJpg(resizedImage, quality: 80); // Compress image
+
+      final uploadTask = storageRef.putData(Uint8List.fromList(compressedImage));
       final snapshot = await uploadTask;
       final imageUrl = await snapshot.ref.getDownloadURL();
 
@@ -40,7 +72,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
       setState(() {
         _imageUrl = imageUrl;
-        _imagePath = imageUrl; // Update image path for local display
       });
     } catch (e) {
       print('Error uploading image: $e');
@@ -53,7 +84,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
       Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Login()));
     } catch (e) {
       print("Error signing out: $e");
-      // Optionally, show an error message to the user
     }
   }
 
@@ -72,11 +102,26 @@ class _SettingsScreenState extends State<SettingsScreen> {
               children: [
                 Stack(
                   children: [
-                    CircleAvatar(
-                      radius: 40,
-                      backgroundImage: _imageUrl != null
-                          ? NetworkImage(_imageUrl!)
-                          : AssetImage(_imagePath) as ImageProvider,
+                    FutureBuilder(
+                      future: _loadProfileImage(),
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState == ConnectionState.waiting) {
+                          return CircleAvatar(
+                            radius: 40,
+                            backgroundImage: AssetImage(_defaultImagePath),
+                          );
+                        } else if (snapshot.hasError || _imageUrl == null) {
+                          return CircleAvatar(
+                            radius: 40,
+                            backgroundImage: AssetImage(_defaultImagePath),
+                          );
+                        } else {
+                          return CircleAvatar(
+                            radius: 40,
+                            backgroundImage: NetworkImage(_imageUrl!),
+                          );
+                        }
+                      },
                     ),
                     Positioned(
                       right: -10,
@@ -107,7 +152,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       ),
                     ),
                     SizedBox(height: 8),
-                   
                   ],
                 ),
               ],
@@ -128,7 +172,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             title: Text('Privacy'),
             subtitle: Text('Privacy settings'),
             onTap: () {
-              // Handle the tap
+              Navigator.push(context, MaterialPageRoute(builder: (context) => PrivacySettingsForm()));
             },
           ),
           ListTile(

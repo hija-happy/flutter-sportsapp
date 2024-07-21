@@ -11,9 +11,9 @@ class OnboardingPageView extends StatelessWidget {
       body: OnboardingPagePresenter(pages: [
         OnboardingPageModel(
           title: "Upcoming Events & Trainings",
-          description: "Stay updated about upcoming sports events and training sessions", 
+          description: "Stay updated about upcoming sports events and training sessions",
           bgColor: Color.fromARGB(255, 177, 182, 75),
-          imageUrl: "assets/Calendar.png", 
+          imageUrl: "assets/Calendar.png",
           textColor: Color.fromRGBO(255, 255, 255, 1)
           ),
           OnboardingPageModel(
@@ -23,7 +23,7 @@ class OnboardingPageView extends StatelessWidget {
             imageUrl: "assets/Achieve.png",
             textColor: Color.fromARGB(255, 255, 255, 255),
           ),
-           OnboardingPageModel(
+          OnboardingPageModel(
             title: "Discover New Sports",
             description:"Check out different sports and activities. From classics like cricket and kabaddi to niche sports",
             bgColor: Color.fromARGB(255, 33, 68, 211),

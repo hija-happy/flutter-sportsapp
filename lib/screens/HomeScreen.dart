@@ -17,7 +17,7 @@ class _HomePageState extends State<HomePage> {
   // Image URLs and descriptions
   final List<Map<dynamic, dynamic>> _imageData = [
     {'image': 'assets/Home_Image/Slider1.jpg', 'description': 'Sports and Fitness'},
-    {'image': 'assets/Home_Image/Slider2.jpg', 'description': 'Description 2'},
+    {'image': 'assets/Home_Image/Slider2.jpg', 'description': 'Victory on the Field'},
     {'image': 'assets/Home_Image/Slider3.jpg', 'description': 'Description 3'},
     {'image': 'assets/Home_Image/Slider4.jpg', 'description': 'Description 4'},
     {'image': 'assets/Home_Image/Slider5.jpg', 'description': 'Description 5'},
@@ -28,7 +28,7 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     // Timer to change the page every 6 seconds
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      Timer.periodic(Duration(seconds: 6), (timer) {
+      Timer.periodic(Duration(seconds: 4), (timer) {
         if (_currentIndex < _imageData.length - 1) {
           _currentIndex++;
         } else {

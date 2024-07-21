@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:alvas_sports/logins/other_users/pd.dart';
 import 'package:alvas_sports/utility/validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +29,7 @@ class _createAccountState extends State<createAccount> {
       );
 
       // Optionally, update user profile with display name
-      await userCredential.user?.updateProfile(displayName: _usernameController.text.trim());
+      await userCredential.user?.updateDisplayName( _usernameController.text.trim());
 
       // Notify user of successful registration
       ScaffoldMessenger.of(context).showSnackBar(
@@ -186,7 +187,7 @@ class _createAccountState extends State<createAccount> {
                           ),
                           TextButton(
                             onPressed: () {
-                              // Handle PD Login action
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=> StudentPage()));
                             },
                             child: Text("PD Login"),
                           ),
