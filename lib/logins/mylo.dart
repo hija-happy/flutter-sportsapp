@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors, use_build_context_synchronously
+
 import 'dart:ui';
 
 import 'package:alvas_sports/home.dart';

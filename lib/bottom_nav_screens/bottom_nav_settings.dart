@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors, avoid_print
+
 import 'dart:typed_data';
 
 import 'package:alvas_sports/drawer_screens/about_us.dart';
@@ -175,14 +177,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               Navigator.push(context, MaterialPageRoute(builder: (context) => PrivacySettingsForm()));
             },
           ),
-          ListTile(
-            leading: Icon(Icons.settings, color: Colors.green),
-            title: Text('General'),
-            subtitle: Text('General settings'),
-            onTap: () {
-              // Handle the tap
-            },
-          ),
+         
           ListTile(
             leading: Icon(Icons.info, color: Colors.purple),
             title: Text('About'),

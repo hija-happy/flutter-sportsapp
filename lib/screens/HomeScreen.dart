@@ -4,6 +4,7 @@ import 'dart:async';  // For Timer
 
 import 'package:alvas_sports/utility/card.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -18,9 +19,9 @@ class _HomePageState extends State<HomePage> {
   final List<Map<dynamic, dynamic>> _imageData = [
     {'image': 'assets/Home_Image/Slider1.jpg', 'description': 'Sports and Fitness'},
     {'image': 'assets/Home_Image/Slider2.jpg', 'description': 'Victory on the Field'},
-    {'image': 'assets/Home_Image/Slider3.jpg', 'description': 'Description 3'},
-    {'image': 'assets/Home_Image/Slider4.jpg', 'description': 'Description 4'},
-    {'image': 'assets/Home_Image/Slider5.jpg', 'description': 'Description 5'},
+    {'image': 'assets/Home_Image/Slider3.jpg', 'description': 'Game On'},
+    {'image': 'assets/Home_Image/Slider4.jpg', 'description': 'Sweat More, Gain More'},
+    {'image': 'assets/Home_Image/Slider5.jpg', 'description': 'Win Always'},
   ];
 
   @override
@@ -58,92 +59,111 @@ final List<CategoryCard> categories = [
       CategoryCard(
         name: 'Cricket',
         image: 'assets/category/cricket.jpg',
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => DetailFootballPage()),
-          );
-        },
+       onTap: () async {
+  final Uri url = Uri.parse('https://olympics.com/en/news/cricket-sport-rules-players-origins-things-to-know');
+  if (await canLaunchUrl(url)) {
+    await launchUrl(url);
+  } else {
+    throw 'Could not launch $url';
+  }
+},
       ),
       CategoryCard(
         name: 'FootBall',
         image: 'assets/category/football.jpg',
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => DetailBasketballPage()),
-          );
-        },
+      onTap: () async {
+  final Uri url = Uri.parse('https://olympics.com/en/news/how-to-play-football-rules-field-pitch-free-kick-penalty?utm_source=google&utm_medium=paid-media&utm_campaign=google_cpc_in_bau-search-2024_hybrid_english&utm_content=google_cpc_in_bau-search-2024_hybrid_en_pmax_na_generic_na&gad_source=1&gclid=EAIaIQobChMI3qC6yPS5hwMVaaNmAh33IATtEAAYASAAEgLOp_D_BwE&gclsrc=aw.ds');
+  if (await canLaunchUrl(url)) {
+    await launchUrl(url);
+  } else {
+    throw 'Could not launch $url';
+  }
+},
       ),
       CategoryCard(
         name: 'HandBall',
         image: 'assets/category/handball.jpg',
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => DetailTennisPage()),
-          );
-        },
+       onTap: () async {
+  final Uri url = Uri.parse('https://olympics.com/en/news/handball-game-rules-regulations-how-to-play');
+  if (await canLaunchUrl(url)) {
+    await launchUrl(url);
+  } else {
+    throw 'Could not launch $url';
+  }
+},
       ),
       CategoryCard(
         name: 'Kabbadi',
         image: 'assets/category/kabbadi.jpg',
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => DetailHockeyPage()),
-          );
-        },
+        onTap: () async {
+  final Uri url = Uri.parse('https://olympics.com/en/news/kabaddi-rules-regulations-how-to-play');
+  if (await canLaunchUrl(url)) {
+    await launchUrl(url);
+  } else {
+    throw 'Could not launch $url';
+  }
+},
       ),
       CategoryCard(
         name: 'Kho - Kho',
+        //
         image: 'assets/category/kho-kho.jpeg',
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => DetailBaseballPage()),
-          );
-        },
+        onTap: () async {
+  final Uri url = Uri.parse('https://www.sportzyogi.com/kho-kho-rules-and-regulation/');
+  if (await canLaunchUrl(url)) {
+    await launchUrl(url);
+  } else {
+    throw 'Could not launch $url';
+  }
+},
       ),
       CategoryCard(
         name: 'Tennis',
         image: 'assets/category/tennis.jpg',
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => DetailVolleyballPage()),
-          );
-        },
+       onTap: () async {
+  final Uri url = Uri.parse('https://olympics.com/en/news/tennis-rules-regulations-how-to-play-basics?utm_source=google&utm_medium=paid-media&utm_campaign=google_cpc_in_bau-search-2024_hybrid_english&utm_content=google_cpc_in_bau-search-2024_hybrid_en_pmax_na_generic_na&gad_source=1&gclid=EAIaIQobChMIwYaC9_S5hwMVTCuDAx1qwAdZEAAYASAAEgJdofD_BwE&gclsrc=aw.ds');
+  if (await canLaunchUrl(url)) {
+    await launchUrl(url);
+  } else {
+    throw 'Could not launch $url';
+  }
+},
       ),
       CategoryCard(
         name: 'VolleyBall',
         image: 'assets/category/volleyball.png',
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => DetailCricketPage()),
-          );
-        },
+       onTap: () async {
+  final Uri url = Uri.parse('https://olympics.com/en/news/how-to-play-volleyball-rules-game-court-about-match-set-smash-spike');
+  if (await canLaunchUrl(url)) {
+    await launchUrl(url);
+  } else {
+    throw 'Could not launch $url';
+  }
+},
       ),
       CategoryCard(
         name: 'Weight Lifting',
         image: 'assets/category/weight.jpg',
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => DetailRugbyPage()),
-          );
-        },
+      onTap: () async {
+  final Uri url = Uri.parse('https://www.nbcolympics.com/news/weightlifting-101-olympic-rules-violations-and-competition-format#:~:text=Olympic%20competition%20format&text=Athletes%20have%20just%20three%20attempts,combined%20total%20is%20the%20winner.');
+  if (await canLaunchUrl(url)) {
+    await launchUrl(url);
+  } else {
+    throw 'Could not launch $url';
+  }
+},
       ),
       CategoryCard(
         name: 'Wrestling',
         image: 'assets/category/wresting.jpg',
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => DetailSwimmingPage()),
-          );
-        },
+       onTap: () async {
+  final Uri url = Uri.parse('https://olympics.com/en/news/what-how-freestyle-wrestling-style-rules-scoring-techniques-olympics');
+  if (await canLaunchUrl(url)) {
+    await launchUrl(url);
+  } else {
+    throw 'Could not launch $url';
+  }
+},
       ),
     ];
 

@@ -2,32 +2,33 @@ import 'package:alvas_sports/bottom_nav_screens/bottom_nav_register.dart';
 import 'package:alvas_sports/bottom_nav_screens/bottom_nav_settings.dart';
 import 'package:alvas_sports/bottom_nav_screens/bottom_nav_sports.dart';
 import 'package:alvas_sports/drawer_screens/about_us.dart';
+import 'package:alvas_sports/drawer_screens/calander.dart';
 import 'package:alvas_sports/screens/HomeScreen.dart';
 import 'package:awesome_bottom_bar/awesome_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
-import 'utility/colors.dart'; 
+import 'utility/colors.dart';
 
 const List<TabItem> items = [
   TabItem(
-    icon: LineAwesomeIcons.home_solid,  
+    icon: LineAwesomeIcons.home_solid,
     title: 'Home',
   ),
   TabItem(
-    icon: LineAwesomeIcons.newspaper,  
+    icon: LineAwesomeIcons.newspaper,
     title: 'News',
   ),
   TabItem(
-    icon: LineAwesomeIcons.plus_solid,  
+    icon: LineAwesomeIcons.plus_solid,
     title: 'Register',
   ),
   TabItem(
-    icon: LineAwesomeIcons.trophy_solid,  
+    icon: LineAwesomeIcons.trophy_solid,
     title: 'Achievements',
   ),
   TabItem(
-    icon: Icons.settings,  
+    icon: Icons.settings,
     title: 'Settings',
   ),
 ];
@@ -103,11 +104,7 @@ class _HomeState extends State<Home> {
               leading: Icon(Icons.calendar_month),
               title: Text('Calendar'),
               onTap: () {
-                Navigator.pop(context);
-                setState(() {
-                  visit = 1;
-                });
-              },
+                Navigator.push(context, MaterialPageRoute(builder: (context)=> Calander()))       ;       },
             ),
             ListTile(
               leading: Icon(Icons.add),
@@ -127,16 +124,7 @@ class _HomeState extends State<Home> {
                
               },
             ),
-            ListTile(
-              leading: Icon(Icons.help),
-              title: Text('Help'),
-              onTap: () {
-                Navigator.pop(context);
-                setState(() {
-                  visit = 4;
-                });
-              },
-            ),
+          
             ListTile(
               leading: Icon(Icons.info),
               title: Text('About Us'),
@@ -193,3 +181,5 @@ class AchievementsScreen extends StatelessWidget {
     );
   }
 }
+
+//https://alvascollege.com/achievements-2/sports/

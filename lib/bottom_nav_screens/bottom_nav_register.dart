@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -55,13 +53,13 @@ class _RegistrationFormState extends State<RegistrationForm> {
 
       if (_achievementFile != null) {
         final storageRef = FirebaseStorage.instance.ref().child('achievements/${_achievementFile!.name}');
-        await storageRef.putFile(File(_achievementFile!.path!));
+        await storageRef.putData(_achievementFile!.bytes!);
         final fileUrl = await storageRef.getDownloadURL();
         data['achievementUrl'] = fileUrl;
       }
 
       await FirebaseFirestore.instance.collection('registrations').add(data);
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Registration successful')));
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Registration successful')));
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Error: ${e.toString()}')));
     } finally {
